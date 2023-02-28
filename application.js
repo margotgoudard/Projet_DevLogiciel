@@ -3,8 +3,8 @@
 // Récupèrer un objet 
 // Lecture du fichier users.json
 //TESST
-const fs = require('fs'); // Déclare le module fs
-let rawdata = fs.readFileSync('users.json'); // Lecture du fichier texte users.json -> résultat dans rawdata
+const fs = require("fs"); // Déclare le module fs
+let rawdata = fs.readFileSync("users.json"); // Lecture du fichier texte users.json -> résultat dans rawdata
 
 // Affichage des users individuellement
 
@@ -16,63 +16,55 @@ let tabCompteur = new Array(); // liste compteur
 
 // Parcourir un objet (tab)
 
-console.log('  Pays et Compteur  '); //Affichage à l'écran
+console.log("  Pays et Compteur  "); //Affichage à l'écran
 
-   // tab[i] = users[j].filter(users => users[j].country != users[k].country)
-
-   
-    let i =0;
-    //boucle pour récupérer les pays
-    for (let j=0; j<users.length; j++)
+// tab[i] = users[j].filter(users => users[j].country != users[k].country)
+//boucle pour récupérer les pays
+for (let j=0; j<users.length; j++)
+{
+    let unique = true;
+    for (let k = 0; k < tab.length; k++)
     {
-        let unique = true;
-        for (let k = 0; k < tab.length; k++)
-        {
-            // si le pays apparaît déjà dans tab unique = false
-            if (users[j].country == tab[k])
-            {   //console.log('in');
-                unique = false;
-            }   
-       }
-       // sinon on ajoute à tab le pays trouvé 
-       if (unique)
-       {
+        // si le pays apparaît déjà dans tab unique = false
+        if (users[j].country == tab[k])
+        {   //console.log('in');
+            unique = false;
+        }   
+    }
+    // sinon on ajoute à tab le pays trouvé 
+    if (unique)
+    {
         tab.push(users[j].country); // tab[i]=users[j].country;
         //i = i +1;
-       }
     }
+}
 
 // fonction qui calcule le nombre d'occurence d'un pays
-    function occurence(pays)
-    {
+function occurence(pays)
+{
     let nboccur=0; 
-            for (let l= 0; l < users.length; l++)
-            {
-                if (pays == users[l].country)
+    for (let l= 0; l < users.length; l++)
+    {
+        if (pays == users[l].country)
          
-                    {
+        {
          
-                        nboccur ++;
+            nboccur ++;
          
-                    }  
-            }
-        return nboccur;
+        }  
     }
+    return nboccur;
+}
             
 // on rentre les occurences dans un tableau
-    for (let k=0; k<tab.length; k++)
-    {
-        tabCompteur[k]= occurence(tab[k]);
-    }
+for (let k=0; k<tab.length; k++)
+{
+    tabCompteur[k]= occurence(tab[k]);
+}
 
-let tabtrié = [];
-
-
-//git config --global user.email "you@example.com"
-//git config --global user.name "Your Name"
-
+/*
 // trier tabCompteur en croissant
-    tabCompteur.sort();
+tabCompteur.sort();
 
 // trier dans l'ordre décroissant 
 
@@ -80,7 +72,32 @@ for (let i = 0; i < tabCompteur.length/2; i++) {
     let tmp = tabCompteur[i];
     tabCompteur[i] = tabCompteur[tabCompteur.length - 1 - i];
     tabCompteur.length[tabCompteur.length - 1 - i] = tmp;
-  }
+}
+//ici le tableau compteur trié mais pas pays
+*/
+
+// trier (ne marche pas)
+for ( let i = 0; i<tabCompteur.length; i++ )
+{
+    let tmp;
+    let tmp2;
+    for ( let k = 0; k<tabCompteur.lengt; k++ )
+    {
+        if(tabCompteur[i]>tabCompteur[k])
+        {
+            tmp = tabCompteur[i];
+            tabCompteur[i]= tabCompteur [k];
+            tabCompteur[k]=tmp;
+
+            tmp2 = tab[i];
+            tab[i]= tab[k];
+            tab[k]=tmp2;
+        
+            
+        }
+    }
+}
+
 
 //let resultat = users.group(({country}) => country);
 console.log(tab);
