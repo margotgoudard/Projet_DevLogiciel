@@ -68,7 +68,8 @@ console.log('  Pays et Compteur  '); //Affichage à l'écran
 let tabtrié = [];
 
 
-
+//git config --global user.email "you@example.com"
+//git config --global user.name "Your Name"
 
 // trier tabCompteur en croissant
     tabCompteur.sort();
