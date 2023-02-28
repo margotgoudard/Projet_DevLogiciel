@@ -2,7 +2,7 @@
 
 // Récupèrer un objet 
 // Lecture du fichier users.json
-
+//TESST
 const fs = require('fs'); // Déclare le module fs
 let rawdata = fs.readFileSync('users.json'); // Lecture du fichier texte users.json -> résultat dans rawdata
 
