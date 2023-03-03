@@ -11,12 +11,11 @@ let rawdata = fs.readFileSync("users.json"); // Lecture du fichier texte users.j
 let users = JSON.parse(rawdata); // Transforme en objet le fichier texte pour pouvoir travailler dessus
 // Tableau pour le stock des pays + compteur 
 
+// pays
 let tab =[]; //new Array(); // liste pays
 let tabCompteur = new Array(); // liste compteur
 
 // Parcourir un objet (tab)
-
-console.log("  Pays et Compteur  "); //Affichage à l'écran
 
 // tab[i] = users[j].filter(users => users[j].country != users[k].country)
 //boucle pour récupérer les pays
@@ -76,7 +75,7 @@ for (let i = 0; i < tabCompteur.length/2; i++) {
 //ici le tableau compteur trié mais pas pays
 */
 
-
+// tri ordre décroissant
 let tmp1;
 let tmp2;
 for (let i = 0; i < tabCompteur.length-1; i++) {
@@ -97,5 +96,80 @@ for (let i = 0; i < tabCompteur.length-1; i++) {
 
 
 //let resultat = users.group(({country}) => country);
+console.log("  Pays  "); //Affichage à l'écran
 console.log(tab);
+console.log("  Compteur  ");
 console.log(tabCompteur);
+
+// société
+let tabSociete =[]; //new Array(); // liste pays
+let tabCompteurSociete = new Array(); // liste compteur
+
+// Parcourir un objet (tabSociete)
+
+//boucle pour récupérer les sociétés
+for (let j=0; j<users.length; j++)
+{
+    let unique = true;
+    for (let k = 0; k < tabSociete.length; k++)
+    {
+        // si la société apparaît déjà dans tab unique = false
+        if (users[j].company == tabSociete[k])
+        {   //console.log('in');
+            unique = false;
+        }   
+    }
+    // sinon on ajoute à tab la société trouvé 
+    if (unique)
+    {
+        tabSociete.push(users[j].company);
+    }
+}
+
+// fonction qui calcule le nombre d'occurence d'une société
+
+function occurence2(société)
+{
+    let nboccur=0; 
+    for (let l= 0; l < users.length; l++)
+    {
+        if ( société == users[l].company)
+         
+        {
+         
+            nboccur ++;
+         
+        }  
+    }
+    return nboccur;
+}
+            
+// on rentre les occurences dans un tableau
+for (let k=0; k<tabSociete.length; k++)
+{
+    tabCompteurSociete[k]= occurence2(tabSociete[k]);
+}
+
+
+// tri ordre décroissant
+let tmp3;
+let tmp4;
+for (let i = 0; i < tabCompteurSociete.length-1; i++) {
+    for ( let j = i+1; j < tabCompteurSociete.length; j++) {
+        if (tabCompteurSociete[i] < tabCompteurSociete[j]) {
+            
+            tmp3 = tabCompteurSociete[i];
+            tabCompteurSociete[i]= tabCompteurSociete [j];
+            tabCompteurSociete[j]=tmp3;
+
+            tmp4 = tabSociete[i];
+            tabSociete[i]= tabSociete[j];
+            tabSociete[j]=tmp4;
+        }
+    }
+}
+
+console.log("  Société "); //Affichage à l'écran
+console.log(tabSociete);
+console.log("  Compteur  ");
+console.log(tabCompteurSociete);
