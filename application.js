@@ -93,13 +93,20 @@ for (let i = 0; i < tabCompteur.length-1; i++) {
     }
 }
 
+let tabTriePays = new Array();
+
+for ( let m=0; m<tab.length; m++)
+{
+    tabTriePays[m] =[ { pays :tab[m], compteur : tabCompteur[m]}];
+}
+
+
 
 
 //let resultat = users.group(({country}) => country);
-console.log("  Pays  "); //Affichage à l'écran
-console.log(tab);
-console.log("  Compteur  ");
-console.log(tabCompteur);
+console.log("  Pays et Compteur "); //Affichage à l'écran
+console.log(tabTriePays);
+
 
 // société
 let tabSociete =[]; //new Array(); // liste pays
@@ -169,7 +176,12 @@ for (let i = 0; i < tabCompteurSociete.length-1; i++) {
     }
 }
 
-console.log("  Société "); //Affichage à l'écran
-console.log(tabSociete);
-console.log("  Compteur  ");
-console.log(tabCompteurSociete);
+let tabTrieSociete = new Array();
+
+for ( let m=0; m<tabSociete.length; m++)
+{
+    tabTrieSociete[m] =[ { pays :tabSociete[m], compteur : tabCompteurSociete[m]}];
+}
+
+console.log("  Société et Compteur "); //Affichage à l'écran
+console.log(tabTrieSociete);
