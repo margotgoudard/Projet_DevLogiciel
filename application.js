@@ -76,27 +76,24 @@ for (let i = 0; i < tabCompteur.length/2; i++) {
 //ici le tableau compteur trié mais pas pays
 */
 
-// trier (ne marche pas)
-for ( let i = 0; i<tabCompteur.length; i++ )
-{
-    let tmp;
-    let tmp2;
-    for ( let k = 0; k<tabCompteur.lengt; k++ )
-    {
-        if(tabCompteur[i]>tabCompteur[k])
-        {
-            tmp = tabCompteur[i];
-            tabCompteur[i]= tabCompteur [k];
-            tabCompteur[k]=tmp;
+
+let tmp1;
+let tmp2;
+for (let i = 0; i < tabCompteur.length-1; i++) {
+    for ( let j = i+1; j < tabCompteur.length; j++) {
+        if (tabCompteur[i] < tabCompteur[j]) {
+            
+            tmp1 = tabCompteur[i];
+            tabCompteur[i]= tabCompteur [j];
+            tabCompteur[j]=tmp1;
 
             tmp2 = tab[i];
-            tab[i]= tab[k];
-            tab[k]=tmp2;
-        
-            
+            tab[i]= tab[j];
+            tab[j]=tmp2;
         }
     }
 }
+
 
 
 //let resultat = users.group(({country}) => country);
